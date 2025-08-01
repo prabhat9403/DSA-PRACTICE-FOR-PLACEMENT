@@ -13,7 +13,9 @@ void find( int n, int m, vector<vector<int>> &grid, vector<vector<int>> &vis, qu
     int col = q.front().first.second;
     int dis = q.front().second;
 
+
     q.pop();
+    dist[row][col] = dis;
 
     for (int i = 0; i < 4; i++)
     {
@@ -22,7 +24,6 @@ void find( int n, int m, vector<vector<int>> &grid, vector<vector<int>> &vis, qu
 
       if (nr >= 0 && nr < n && nc >= 0 && nc < m && grid[nr][nc] == 0 && !vis[nr][nc])
       {
-        dist[nr][nc] = dis + 1;
         vis[nr][nc]=1;
         q.push({{nr, nc}, dis + 1});
       }
@@ -34,7 +35,7 @@ int main()
   int n, m;
   cin >> n >> m;
   vector<vector<int>> grid(n, vector<int>(m));
-  vector<vector<int>> vis(n, vector<int>(m, 0));
+  vector<vector<int>> vis(n, vector<int>(m));
   vector<vector<int>> dist(n, vector<int>(m, 0));
 
   queue<pair<pair<int, int>, int>> q;
@@ -52,11 +53,12 @@ int main()
       if (grid[i][j] == 1)
       {
         vis[i][j] = 1;
-        dist[i][j] = 0;
+        
         q.push({{i, j}, 0});
       }
       else{
-        dist[i][j]=20;
+        vis[i][j]=0;
+        
       }
     }
   }
