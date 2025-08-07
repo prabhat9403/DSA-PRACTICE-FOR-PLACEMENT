@@ -15,7 +15,6 @@ bool hasCycle(int node,vector<vector<int>>&adj,vector<int>&vis,vector<int>&Pathv
   Pathvis[node]=0;
   check[node]=1;
   return false;
-
 }
 
 
